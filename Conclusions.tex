@@ -1,0 +1,58 @@
+\chapter{Conclusions and Future Work}
+\label{chapterconclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Overview}
+The main aim of this thesis was to enhance the functionality of the already existing MRI simulator POSSUM with parallel imaging capabilities. In particular, the entire pipeline was considered, from coil sensitivity maps generation to parallel imaging reconstruction. In addition, an image-based reconstruction algorithm was considered and tested with the newly implemented pipeline for various combinations of parameters. Towards the achievement of these goals, the next steps were taken:
+
+\begin{itemize}
+    \item Multi-coil acquisition capabilities were added to POSSUM. As the first step towards simulating partially parallel magnetic resonance imaging is to model acquisition with multiple receiver coils, different sensitivity profiles for non-homogeneous surface coils were generated and used in all the simulations presented in this thesis.
+    
+    \item The parallel imaging pipeline was simulated with the enhanced version of POSSUM. For this, the previously generated sensitivity profiles were used in a variety of scenarios. First, the number of coils in the array was varied. Simulations were done with arrays of 2, 4, 6, 8, 12 and 16 channels. Second, different spatial variations of the sensitivity profiles was considered in order to encompass both too low coil sensitivity and too high sensitivity as the range extremes. 
+    
+    \item The performance of a SENSE-type reconstruction algorithm was evaluated. For this, the quality of the proposed reconstruction algorithm was tested under increasing acceleration factors. Moreover, noise was added to the sensitivity maps of the coils and SENSE reconstructions were again performed for all combinations of the parameters described above in order to evaluate its robustness to noise.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+Partially parallel magnetic resonance imaging techniques were born from the need of reducing MRI scan time. Indeed, other approaches have been made towards this goal, but all of them were focused on developing faster sequences which eventually reached a technical plateau. The advantage of pMRI is that it works in conjunction with already established MRI sequences. In fact, these techniques are popular enough that they are part of the standard imaging pipeline of many clinically available scanners. However, as with any other MRI technique, these are also prone to a handful of problems which need to be investigated in a controlled and reliable manner.
+
+That being said, the only way of accurately assessing the reconstruction schemes which are used in pMRI is to simulate the parallel imaging acquisition pipeline. As a result, the main aim of this thesis was to enhance an already existing MRI simulator called POSSUM with parallel imaging capabilities and to test a popular image based reconstruction algorithm called SENSE under various combinations of parameters. In doing so, the following points can be concluded:
+
+\begin{itemize}
+    \item The newly enhanced POSSUM can now simulate the parallel imaging pipeline. When this option is considered, a collection of coil sensitivity maps, together with the acceleration factor desired, must be provided as input to the simulator. In doing so, POSSUM will generate non-aliased (when $R = 1$) or aliased (when $R > 1$) images for each individual coil. 
+
+    \item Having generated this dataset, an image based parallel imaging reconstruction algorithm was then tested. As SENSE-type algorithms are known to be affected by the reduction of phase-encoding lines and by the accuracy of the sensitivity maps, both these scenarios were investigated:
+    
+    \begin{itemize}
+        \item First, different acceleration factors were considered and tested for various combinations of coils and sensitivity profiles. It was found that a good balance between the coil geometry and the acceleration factor needs to be found as both parameters are generally extremely important for accurate reconstructions. In fact, there are two types of imaging artifacts which are known to affect SENSE reconstructions: residual aliasing and noise enhancement. Both were found in our simulations as a consequence of the high dependency between the considered parameters.
+        
+        \item Second, as the quality of SENSE reconstructions is known to be directly affected by the accuracy of the coil sensitivity profiles, an experiment was devised in which different levels of noise were added to the maps used for reconstructions. As expected, it was found that all of the above described parameters are important. More specifically, increasing the acceleration factor will lead to poorer reconstructions for lower levels of noise, while increasing the number of channels in the array will lead to more accurate reconstructions and therefore a higher robustness to noise. 
+        
+    \end{itemize}
+
+\end{itemize}
+
+All in all, the main aim of this thesis was achieved. This was the first step towards a full integration within POSSUM of the parallel imaging pipeline. In addition, we showed that a popular image based pMRI reconstruction algorithm can be tested with the simulated data sets under various scenarios. That being said, this current work leads to promising avenues for future research.
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Future Work}
+The research done in this thesis is not without limitations. That being said, this section is concerned with looking at future improvements and directions.
+
+The first direction which will be taken as a consequence of this work is to improve upon the literature review chapter. The main aim here is to turn this early work into a \textit{review paper of MRI simulators}.
+
+In addition, the current state of this work will be extended. The first step towards this goal is to \textit{integrate the parallel imaging pipeline within POSSUM}, together with the reconstruction algorithm. Moreover, a tutorial for how to seamlessly interact with the newly enhanced software will be created for anyone to easily use the new capabilities.
+
+Next, \textit{coil geometry} should be investigated. In parallel imaging techniques, great thought is put into developing the phased-array coil used for signal acquisition. One of its most important aspects is the physical positions of the coils with respect to the object being imaged. More specifically, for accurate reconstructions, the array of channels must be positioned in such a way that their inherent sensitivity profiles are spatially varying in the direction of acceleration. As a lot of research is done in this area, a more informed approach to the creation of the coil arrays could improve the subsequent reconstructions.
+
+% On top of that, \textit{coil sensitivity profiles} are of utmost importance for . In this thesis, the coil sensitivity profiles were generated to spatially vary isotropically starting at the coil centre. A more realistic way of generating sensitivity maps is described by Pruessmann et al \cite{Pruessmann1999} in their SENSE paper. The authors state that sensitivity map determination can be done by acquiring a collection of full FOV images during a pre-scan for each individual coil and dividing each one of them to the "sum-of-squares" of the set. However, this approach leads to noisy maps which have to be smoothed out with a 2D polynomial fit in each pixel location. Nevertheless, it is an avenue worth exploring.
+
+Moreover, \textit{K-space reconstruction algorithms} should be added. In this thesis the focus was on image based reconstructions. A second type of reconstruction algorithms, which are also used clinically, are called k-space reconstruction algorithms. These techniques have a different approach on determining the missing phase encoding lines as they work directly with the undersampled k-space. Moreover, they require a special pre-scan which collects the middle k-space for each coil without acceleration and uses that information to reconstruct the missing data. A comparison between the 2 types of reconstructions could therefore be evaluated.
+
+Also, as a major source of imaging artifacts is patient movement, \textit{simulating motion} would be of great importance. Motion can be a determining factor when it comes to image quality in magnetic resonance imaging. For this reason, pMRI accelerated sequences are used to acquire signal in between heart beats or respiration. However, motion can still affect the quality of reconstruction especially during readout as different spatial locations within the object will be weighted differently by the sensitivity maps of the channels. Simulating motion would be challenging, but it is an avenue worth exploring.
+
+As a long term goal, given the fact that the main aim of my PhD project is to develop novel MRI biomarkers to measure progression in neurodegenerative diseases, such as Parkinson’s Disease (PD), based on DW-MRI data, the current work will be extended to incorporate diffusion. This could allow for a more accurate representation of the underlying brain microstructure.
+
+% Parkinson’s Disease is a common progressive neurodegenerative disease that manifests clinically with symptoms including tremors and/or imprecise movements. The disease is known to attack substantia nigra, a gray matter structure lying deep inside the brain. Advanced DW-MRI techniques, such as NODDI, have the potential to help us detect the earliest signs of the disorder in terms of subtle changes to tissue microarchitecture, long before the onset of clinical symptoms. This may open an earlier therapeutic window to develop effective preventative treatments.
+
+% However, DW-MRI datasets suffer from a range of imaging artifacts and challenges that are more acute in patients with PD. Common imaging artifacts include severe geometric distortions due to magnetic susceptibility differences at the air-tissue interfaces and eddy currents induced by diffusion sensitising gradients. In patients with PD, these are compounded by patient motion. Furthermore, substantia nigra, the key region of interest, is plagued with poor signal-to-noise ratio. Simulation provides a controlled way of studying these, understanding how they impact the quantification of tissue microstructure, and ultimately develop methods to mitigate their impact.

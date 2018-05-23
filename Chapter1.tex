@@ -1,0 +1,66 @@
+\chapter{Introduction}
+\label{chapterlabel1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation}
+
+Magnetic Resonance Imaging is an imaging technique that is widely used today in clinics and medical  research facilities to aid the understanding of how the human body works. It has many applications in the biomedical sciences such as the study of human anatomy, pathology and even function. Clinically, magnetic resonance imaging is also commonly preferred over other imaging modalities as it can provide good soft tissue contrast, it is non-invasive and uses non-ionising radiation.
+
+However, MRI has a few potential drawbacks. First of all, MRI scans are expensive due to the high costs involved in purchasing and maintaining an MRI scanner. As the cost per scan is generally proportional to the scanning time, a large body of research is being done in trying to reduce the amount of time needed for a scan. Secondly, the imaging process is sensitive to movement. Any type of motion, such as patient motion, pulsatile flow, and even external disturbances, can affect the quality of the resulting MRI images. Hence, there is a need to mitigate these problems. One way to do so is to use parallel imaging techniques. 
+
+Partially parallel magnetic resonance imaging is a class of acquisition schemes and reconstruction algorithms that uses less time to produce the same images as with a standard MRI pipeline. The advantage of pMRI is that it can be used in conjunction with well established MRI sequences. In fact, pMRI has become a standard in many clinically available scanners, as it can reduce scanning time as much as 2 or even 3 times the original without losing spatial resolution. However, as with all other MRI techniques, these are also prone to a handful of problems which need to be investigated in a controlled and reliable manner. 
+
+Given that the only way to accurately assess the reconstruction algorithms used in pMRI techniques is to use an MRI simulator, the aim of this thesis is to accurately simulate the entire parallel imaging pipeline. In order to accomplish this, an existing MRI simulator, called POSSUM (\textit{Physics Oriented Simulated Scanner for Understanding MRI}), was used. This decision was influenced by both the open source nature of the simulator and its lack of support for multiple channel acquisitions. As a result, this project was focused on enhancing POSSUM with parallel imaging capabilities.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scope and Objectives}
+
+The aims of the research presented in this thesis are to build upon the structure of an already available  MRI simulator called POSSUM and to test the quality of reconstructions performed with an image-based reconstruction algorithm under various circumstances. In order to achieve this, the following objectives are to be met:
+
+\begin{itemize}
+    \item \textit{Enhance POSSUM with multi-coil acquisition}. The first step towards the parallel imaging pipeline is to make multi-coil acquisition possible within POSSUM. For this, arrays of multi-channel RF receiver coils of different sensitivity profiles were generated and used in our simulations. 
+    
+    \item \textit{Simulate parallel imaging with enhanced POSSUM}. Using the newly enhanced POSSUM, simulations of increasing acceleration factors were performed for multiple types of coil geometries and sensitivity profiles.
+    %In pMRI techniques, an array of non-homogeneous receiver coils is used to collect the signal during readout. Each of these channels will have an associated sensitivity profile which describes how sensitive the respective coil is to the signal originating from a certain spatial location within the object. As the sensitivity profiles were generated previously, the next step is to use them in the simulation pipeline for a variety of parameter combinations. These parameters are: the number of channels in the array, the spatial variation of the coil sensitivity profile, the pMRI acceleration factor and the level of noise added to the sensitivity maps of the coils.
+    
+    \item \textit{Evaluate the performance of SENSE-type reconstructions}. An image-based reconstruction algorithm was used in conjunction with the dataset generated previously to evaluate the quality of reconstruction and the robustness to noise of the proposed SENSE algorithm.
+    
+    % \begin{itemize}
+    %     \item \textit{The number of channels in the array}. This parameters will be varied starting from a 2-channel array up to a 16-channel array.
+    
+    %     \item \textit{The spatial variation of the coil sensitivity profile}. This parameter describes how much of the field-of-view is covered and how sensitive a specific coil is to the signal generating from a spatial location within the object.
+    
+    %     \item \textit{The acceleration factor $R$}. This parameter describes the amount of scanning time reduction. 
+        
+    %     \item \textit{The amount of noise added to the sensitivity profiles of the coils}.
+    % \end{itemize}
+    
+    % \item Every non-homogeneous coil in the array must be able to acquire undersampled k-space data in the phase-encoding direction. 
+    %     %As a result, the reconstructed field-of-view will be smaller than the object being imaged, leading to aliasing artifacts in the phase-encoding direction of the final images.
+        
+    
+    % \item \textit{Use POSSUM to create aliased images by reducing the scanning time}. Aliasing occurs when the k-space is undersampled, leading to a smaller reconstructed field-of-view than the object being imaged. By reducing the phase-encoding steps of, for example an EPI sequence acquisition, aliasing will occur in the final images in the phase-encoding direction.
+    
+    % \item \textit{Perform image-based parallel imaging reconstructions (more specifically, the SENSE reconstruction algorithm) for different acceleration factors}. A SENSE-based reconstruction algorithm was tested with the POSSUM generated aliased images and the coil sensitivity maps for various acceleration factors $R = \{1, 2, 3, 4\}$.
+    
+    % \item \textit{Investigate the effect of noise on SENSE reconstructions}. Noise is inherently present in all MRI scans and is also a big issue in parallel imaging techniques. For this, the effect of noise added to coil sensitivity profiles was investigated.
+    
+    % \item \textit{Investigate whether motion can be averted when scanning time is reduced}. Motion is supposedly the most frequent source of artifacts in MRI images. Parallel imaging techniques are known to solve this issue by lowering the scanning time and thus reducing the probability of motion happening during acquisition. For this, a proof of concept experiment was devised to show that higher acceleration factors will be less prone to motion. 
+    
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Thesis Outline}
+
+This project aims to develop a parallel imaging pipeline within the state-of-the-art simulator called POSSUM. In accomplishing this, a certain path mush be taken. 
+
+First, a good understanding of the MRI physics must be shown. For this, \textbf{Chapter 2 (Magnetic Resonance Imaging)} describes the building blocks for understanding the physical concepts of the MRI pipeline and, therefore, the more advanced techniques described later on. This chapter will take the reader from the physical concepts of nuclear magnetic resonance, to the steps required for MR image formation and, finally, the motivation for and the important concepts of parallel imaging techniques.
+
+Second, as simulation is the key player in this research, \textbf{Chapter 3 (MRI Simulation)} sets the scene for currently active MRI simulators. The main aim of this chapter is to place POSSUM (the simulator used throughout this thesis) into the MRI simulation context and to identify the most sought for simulator features.
+
+Third, an in-depth description of how the pipeline was implemented is provided in \textbf{Chapter 4 (Simulating Parallel Imaging)}. More specifically, this chapter describes the methods used for simulating parallel imaging within POSSUM and it is also equipped with a comprehensive description of the reconstruction algorithm used for all our experiments.
+
+Next, we demonstrate that the proposed pipeline is viable. Namely, multiple receiver surface coil acquisition is shown to work within POSSUM and parallel imaging is simulated under different combinations of parameters. These results are to be found in \textbf{Chapter 5 (Results)}.
+
+The final remarks, together with the conclusions and future work will be outlined in \textbf{Chapter 6 (Conclusions and Future Work)}. This chapter ties everything together by presenting, on top of current limitations of the work and future improvements, the long term aim of my PhD thesis.
+

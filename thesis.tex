@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[margin=0.7in]{geometry}
+\usepackage{listings}
+\usepackage{hyperref}
+
+%\usepackage[nomarkers,figuresonly]{endfloat}
+\usepackage{graphicx}
+\graphicspath{ {img/} }
+\usepackage{lscape}
+\usepackage{xcolor,colortbl}
+%\usepackage{rotating}
+%\usepackage{epstopdf}
+%\usepackage{minted}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{amsmath}
+
+%\usepackage{multirow}
+
+%\usepackage{natbib}
+
+\title{\vspace*{8em} Thesis\\ \vspace*{4em}}
+\author{IRINA GRIGORESCU}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\clearpage
+\abstract TODO
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\subsection{Motivation}
+
+\textit{Rough notes} \\
+
+Magnetic Resonance Imaging is an 
+imaging technique that is widely used today in clinics and medical 
+research facilities to aid the understanding of how the human body 
+works. It has many applications in the biomedical sciences such as the study of the human anatomy, pathology and even function.
+
+The main aim of MRI is to allow the clinician to assess the inner 
+workings of our bodies in a non-invasive way. This is normally 
+accomplished in the following way: the patient sits quietly in the MRI 
+scanner, while the clinician programs the scanner with a set of sequence parameters on how to acquire the images. The resulting data sets are made up of gray scale images which can provide different type of information or contrast depending on how the clinician tweaked the sequence parameters. 
+
+In order for the final MR images to be correct, the patient needs to 
+sit incredibly still and all of the scanner's hardware parts need to be 
+perfect. As this is not feasible, MR artefacts appear in the resulting 
+images. There is a great deal of effort in the imaging research communities to come up with sophisticated algorithms to correct the imaging artefacts caused by motion or physiological changes in the body, but there is no ground truth with which to validate such algorithms.
+
+Therefore, the main aim of our research group is to simulate the 
+processes which are taking place throughout the whole scanning pipeline 
+in order to provide this ground truth. In doing so, four building 
+blocks need to be provided. Firstly, an object which mimics the behaviour of our patient is needed. Secondly, the scanner specifications such as the magnet's strength need to exist. Thirdly, the sequence parameters need to be provided and lastly the reconstruction method which outputs the final image needs to be implemented. In the following paragraphs I will give more details about these 4 main building blocks. 
+
+The sample specifications are of utmost importance when real-life MRI 
+simulations are wanted. More specifically, a patient's organ such as 
+his or her brain can be replaced by tissue properties such as magnetic 
+relaxation times. Also, patient movements can be simulated using combinations of rotations and translations of the object's geometry. 
+
+Next, the scanner's specifications can be simulated more or less 
+realistically. For example, providing the magnet's strength,
+
+
+\subsection{Scope and Objectives}
+
+\subsection{Thesis Outline}
+
+\textbf{TODO}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+
+\textbf{TODO} \\
+\textbf{IMPORTANCE OF MR} \\
+\textbf{WHY WE NEED SIMULATION}
+
+%------------------------------------------------
+
+\section{Classification of MRI simulators}
+\textbf{TODO: Justify choice of categorization}
+The classification of the MRI simulators used in this paper is as 
+follows:
+
+\begin{enumerate}
+
+	\item Sample
+	\begin{enumerate}
+		\item Nature of Samples
+		\begin{enumerate}
+			\item 1D objects
+			\begin{itemize}
+				\item Bittoun (1984)
+			\end{itemize}
+			
+			\item 2D objects
+			\item 3D objects
+		\end{enumerate}
+		
+		\item Chemical Shift
+		\begin{itemize}
+			\item 
+		\end{itemize}
+		
+		\item Motion
+		\begin{enumerate}
+			\item No motion
+			\begin{itemize}
+				\item Bittoun (1984)
+			\end{itemize}
+			
+			\item Motion
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+	
+	\item Scanner
+	\begin{enumerate}
+		\item Magnet
+		\begin{enumerate}
+			\item No inhomogeneities present
+			\item Static field inhomogeneities
+			\item Time changing inhomogeneities
+		\end{enumerate}
+		
+		\item Gradients
+		
+		\item Coils
+		\begin{enumerate}
+			\item Single-coil capabilities
+			\item Multi-coil capabilities
+		\end{enumerate}
+		
+		\item RF Pulses
+		\begin{enumerate}
+			\item 
+		\end{enumerate}
+	\end{enumerate}
+	
+	
+	\item Sequence
+	\begin{enumerate}
+		\item Provide your own sequence
+		\item Sequences are already provided
+	\end{enumerate}
+	
+	\item Signal
+	\begin{enumerate}
+		\item Bloch eq
+		\item Bloch-Torrey eq
+	\end{enumerate}
+	
+	\item Reconstruction
+	\begin{enumerate}
+		\item Parallel reconstruction capabilities
+		\item Bloch equation based reconstruction
+		\begin{itemize}
+			\item Bittoun (1984)
+		\end{itemize}
+	\end{enumerate}
+	
+	\item Implementation
+	\begin{enumerate}
+		\item Programming Paradigm
+		\begin{itemize}
+			\item Procedural
+			\item Object Oriented
+		\end{itemize}
+		
+		\item Hardware-specific implementation
+		\begin{itemize}
+			\item Can be used to drive the hardware of scanners from different manufacturers
+			\item Not
+		\end{itemize}
+		
+		\item Graphical User Interface
+		\begin{itemize}
+			\item Provides a scanner specific GUI
+			\item Provides an easy to use 
+		\end{itemize}
+		
+	\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+\end{document}
